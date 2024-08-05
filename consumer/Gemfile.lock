@@ -1,98 +1,145 @@
+GIT
+  remote: https://github.com/safdotdev/pact-ruby.git
+  revision: f3c4c0edef97715fdf503393c0e14238b350bad0
+  branch: feat/ffi
+  specs:
+    pact (1.64.0)
+      pact-ffi (~> 0.4)
+      pact-support (~> 1.16, >= 1.16.9)
+      rack-test (>= 0.6.3, < 3.0.0)
+      rspec (~> 3.0)
+      term-ansicolor (~> 1.11)
+      thor (>= 0.20, < 2.0)
+      webrick (~> 1.8)
+
+GIT
+  remote: https://github.com/safdotdev/pact-support.git
+  revision: 462cf196133db23736ff5d59d97bf5982e0164eb
+  branch: feat/ffi
+  specs:
+    pact-support (1.20.0)
+      awesome_print (~> 1.9)
+      diff-lcs (~> 1.5)
+      expgen (~> 0.1)
+      rainbow (~> 3.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (4.2.5.1)
-      i18n (~> 0.7)
-      json (~> 1.7, >= 1.7.7)
-      minitest (~> 5.1)
-      thread_safe (~> 0.3, >= 0.3.4)
-      tzinfo (~> 1.1)
-    awesome_print (1.6.1)
-    coderay (1.1.1)
-    diff-lcs (1.2.5)
-    find_a_port (1.0.1)
-    httparty (0.13.7)
-      json (~> 1.8)
+    activesupport (7.1.3.4)
+      base64
+      bigdecimal
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      connection_pool (>= 2.2.5)
+      drb
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      mutex_m
+      tzinfo (~> 2.0)
+    awesome_print (1.9.2)
+    base64 (0.2.0)
+    bigdecimal (3.1.8)
+    coderay (1.1.3)
+    concurrent-ruby (1.3.3)
+    connection_pool (2.4.1)
+    csv (3.3.0)
+    diff-lcs (1.5.1)
+    dig_rb (1.0.1)
+    drb (2.2.1)
+    expgen (0.1.1)
+      parslet
+    ffi (1.17.0-aarch64-linux-gnu)
+    ffi (1.17.0-aarch64-linux-musl)
+    ffi (1.17.0-arm64-darwin)
+    ffi (1.17.0-x86_64-darwin)
+    ffi (1.17.0-x86_64-linux-gnu)
+    ffi (1.17.0-x86_64-linux-musl)
+    httparty (0.22.0)
+      csv
+      mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    i18n (0.7.0)
-    json (1.8.3)
-    method_source (0.8.2)
-    minitest (5.8.4)
-    multi_xml (0.5.5)
-    pact (1.9.0)
-      awesome_print (~> 1.1)
-      find_a_port (~> 1.0.1)
-      json
-      pact-mock_service (~> 0.7)
-      pact-support (~> 0.5)
-      rack-test (~> 0.6.2)
-      randexp (~> 0.1.7)
-      rspec (>= 2.14)
-      term-ansicolor (~> 1.0)
-      thor
-      webrick
-    pact-mock_service (0.8.1)
-      find_a_port (~> 1.0.1)
-      json
-      pact-support (~> 0.5.3)
-      rack
-      rack-test (~> 0.6.2)
-      rspec (>= 2.14)
-      term-ansicolor (~> 1.0)
-      thor
-      webrick
-    pact-support (0.5.4)
-      awesome_print (~> 1.1)
-      find_a_port (~> 1.0.1)
-      json
-      rack-test (~> 0.6.2)
-      randexp (~> 0.1.7)
-      rspec (>= 2.14)
-      term-ansicolor (~> 1.0)
-      thor
-    pry (0.10.3)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
-    rack (1.6.4)
-    rack-test (0.6.3)
-      rack (>= 1.0)
-    rake (10.5.0)
-    randexp (0.1.7)
-    rspec (3.4.0)
-      rspec-core (~> 3.4.0)
-      rspec-expectations (~> 3.4.0)
-      rspec-mocks (~> 3.4.0)
-    rspec-core (3.4.3)
-      rspec-support (~> 3.4.0)
-    rspec-expectations (3.4.0)
+    i18n (1.14.5)
+      concurrent-ruby (~> 1.0)
+    method_source (1.1.0)
+    mini_mime (1.1.5)
+    minitest (5.24.1)
+    multi_xml (0.7.1)
+      bigdecimal (~> 3.1)
+    mutex_m (0.2.0)
+    pact-ffi (0.4.22-aarch64-linux)
+      ffi (~> 1.15)
+    pact-ffi (0.4.22-aarch64-linux-musl)
+      ffi (~> 1.15)
+    pact-ffi (0.4.22-arm64-darwin)
+      ffi (~> 1.15)
+    pact-ffi (0.4.22-x86_64-darwin)
+      ffi (~> 1.15)
+    pact-ffi (0.4.22-x86_64-linux)
+      ffi (~> 1.15)
+    pact-ffi (0.4.22-x86_64-linux-musl)
+      ffi (~> 1.15)
+    pact_broker-client (1.75.4)
+      base64 (~> 0.2)
+      dig_rb (~> 1.0)
+      httparty (>= 0.21.0, < 1.0.0)
+      rake (~> 13.0)
+      table_print (~> 1.5)
+      term-ansicolor (~> 1.7)
+      thor (>= 0.20, < 2.0)
+    parslet (2.0.0)
+    pry (0.14.2)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    rack (3.1.7)
+    rack-test (2.1.0)
+      rack (>= 1.3)
+    rainbow (3.1.1)
+    rake (13.2.1)
+    rspec (3.13.0)
+      rspec-core (~> 3.13.0)
+      rspec-expectations (~> 3.13.0)
+      rspec-mocks (~> 3.13.0)
+    rspec-core (3.13.0)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.1)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.4.0)
-    rspec-mocks (3.4.1)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.1)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.4.0)
-    rspec-support (3.4.1)
-    slop (3.6.0)
-    term-ansicolor (1.3.2)
+      rspec-support (~> 3.13.0)
+    rspec-support (3.13.1)
+    sync (0.5.0)
+    table_print (1.5.7)
+    term-ansicolor (1.11.2)
       tins (~> 1.0)
-    thor (0.19.1)
-    thread_safe (0.3.5)
-    tins (1.9.0)
-    tzinfo (1.2.2)
-      thread_safe (~> 0.1)
-    webrick (1.3.1)
+    thor (1.3.1)
+    tins (1.33.0)
+      bigdecimal
+      sync
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
+    webrick (1.8.1)
 
 PLATFORMS
-  ruby
+  aarch64-linux
+  aarch64-linux-gnu
+  aarch64-linux-musl
+  arm64-darwin
+  x86_64-darwin
+  x86_64-linux
+  x86_64-linux-gnu
+  x86_64-linux-musl
 
 DEPENDENCIES
   activesupport
   awesome_print
   httparty
-  pact
+  pact (~> 1.63)!
+  pact-support (~> 1.16, >= 1.16.9)!
+  pact_broker-client
   pry
   rake
   rspec
 
 BUNDLED WITH
-   1.11.2
+   2.5.11

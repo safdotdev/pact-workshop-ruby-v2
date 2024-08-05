@@ -1,9 +1,15 @@
 require 'pact/provider/rspec'
 
+Pact.configure do |config|
+  # config.rust_log_level = 5
+  # config.logger.level = Logger::DEBUG
+  # config.logger = Logger.new($stdout)
+end
+
 Pact.service_provider "Our Provider" do
 
   honours_pact_with 'Our Consumer' do
-    pact_uri 'spec/pacts/our_consumer-our_provider.json'
+    pact_uri '../consumer/spec/pacts/Our Consumer-Our Provider.json'
   end
 
 end

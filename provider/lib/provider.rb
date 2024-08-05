@@ -2,7 +2,7 @@ require 'sinatra/base'
 require 'json'
 
 class ProviderData
-  @@data_count = 1000
+  @data_count = 1000
   class << self
     attr_accessor :data_count
   end
