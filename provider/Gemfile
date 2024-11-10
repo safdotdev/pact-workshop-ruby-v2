@@ -9,5 +9,12 @@ group :development, :test do
   gem 'pry'
   gem 'rspec'
   gem 'awesome_print'
-  gem 'pact'
+  gem 'combustion'
+  gem 'webmock'
+end
+
+if ENV['X_PACT_DEVELOPMENT']
+  gem 'sbmt-pact', path: '../../sbmt-pact'
+else
+  gem 'sbmt-pact', git: 'https://github.com/YOU54F/sbmt-pact.git', branch: 'feat/pact-ruby'
 end
