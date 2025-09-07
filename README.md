@@ -11,7 +11,7 @@ Pact is a ruby gem that allows you to define a pact between service consumers an
 
 This allows you to test both sides of an integration point using fast unit tests.
 
-## Step 1 - Simple customer calling Provider
+## Step 1 - Simple customer calling Provider 
 
 Given we have a client that needs to make a HTTP GET request to a sinatra webapp, and requires a response in JSON format. The client would look something like:
 
