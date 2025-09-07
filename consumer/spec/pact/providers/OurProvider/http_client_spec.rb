@@ -32,8 +32,8 @@ RSpec.describe 'Sbmt::Pact::Providers::Test::HttpClient', :pact do
         super()
           .given('data count is > 0')
           .upon_receiving('a request for json data')
-            .with_request(:get, '/provider.json', query: { 'valid_date' => date })
-          .with_response(200, body: {
+          .with_request(:get, '/provider.json', query: { 'valid_date' => date })
+          .will_respond_with(200, body: {
                            'test' => 'NO',
                            'valid_date' => match_regex(
                              /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+\d{2}:\d{2}/,
@@ -54,8 +54,8 @@ RSpec.describe 'Sbmt::Pact::Providers::Test::HttpClient', :pact do
         super()
           .given('data count is == 0')
           .upon_receiving('a request for json data')
-            .with_request(:get, '/provider.json', query: { 'valid_date' => date })
-          .with_response(404)
+          .with_request(:get, '/provider.json', query: { 'valid_date' => date })
+          .will_respond_with(404)
       end
         it 'handles the 404 response' do
           interaction.execute do
@@ -71,7 +71,7 @@ RSpec.describe 'Sbmt::Pact::Providers::Test::HttpClient', :pact do
           .given('data count is > 0')
           .upon_receiving('a request with a missing date parameter')
           .with_request(:get, '/provider.json', query: { 'valid_date' => '' })
-            .with_response(400)
+          .will_respond_with(400)
                              #  body: 'valid_date is required'.to_json,
                              #  headers: { "contentType": 'application/json' }
       end
@@ -89,7 +89,7 @@ RSpec.describe 'Sbmt::Pact::Providers::Test::HttpClient', :pact do
           .given('data count is > 0')
           .upon_receiving('a request with an invalid date parameter')
           .with_request(:get, '/provider.json', query: { 'valid_date' => p('This is not a date') })
-          .with_response(400)
+          .will_respond_with(400)
                           #  body: "'This is not a date' is not a date",
                           # headers: {"Content-Type": "application/json"},
       end
