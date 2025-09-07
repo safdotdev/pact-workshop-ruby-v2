@@ -24,7 +24,7 @@ RSpec.describe 'Sbmt::Pact::Providers::Test::HttpClient', :pact do
   describe 'Pact with our provider' do
     let(:interaction) { new_interaction }
 
-    subject { Client.new('localhost:3000') }
+    # subject { Client.new('localhost:3000') }
     let(:date) { Time.now.httpdate }
 
     describe 'get json data' do
@@ -44,7 +44,8 @@ RSpec.describe 'Sbmt::Pact::Providers::Test::HttpClient', :pact do
       end
 
       it 'executes the pact test without errors' do
-        interaction.execute do
+          interaction.execute do | mock_server |
+          subject = Client.new(mock_server.url)
           expect(subject.process_data(date)).to eql([1, Time.parse(json_data['valid_date'])])
         end
       end
@@ -58,13 +59,14 @@ RSpec.describe 'Sbmt::Pact::Providers::Test::HttpClient', :pact do
           .will_respond_with(404)
       end
         it 'handles the 404 response' do
-          interaction.execute do
+          interaction.execute do | mock_server |
+          subject = Client.new(mock_server.url)
             expect(subject.process_data(date)).to eql([0, nil])
           end
         end
     end
     describe 'handling invalid responses' do
-      subject { Client.new('localhost:3000') }
+      # subject { Client.new('localhost:3000') }
 
       let(:interaction) do
         super()
@@ -76,13 +78,14 @@ RSpec.describe 'Sbmt::Pact::Providers::Test::HttpClient', :pact do
                              #  headers: { "contentType": 'application/json' }
       end
       it 'handles a missing date parameter' do
-          interaction.execute do
+          interaction.execute do | mock_server |
+          subject = Client.new(mock_server.url)
             expect(subject.process_data(nil)).to eql([0, nil])
           end
       end
     end
     describe 'handling invalid responses' do
-      subject { Client.new('localhost:3000') }
+      # subject { Client.new('localhost:3000') }
 
       let(:interaction) do
         super()
@@ -94,7 +97,8 @@ RSpec.describe 'Sbmt::Pact::Providers::Test::HttpClient', :pact do
                           # headers: {"Content-Type": "application/json"},
       end
       it 'handles an invalid date parameter' do
-          interaction.execute do
+          interaction.execute do | mock_server |
+          subject = Client.new(mock_server.url)
             expect(subject.process_data('This is not a date')).to eql([0, nil])
           end
       end
