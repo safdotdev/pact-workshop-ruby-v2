@@ -17,7 +17,7 @@ task default: [:spec]
 
 RSpec::Core::RakeTask.new('pact:spec') do |task|
   task.pattern = 'spec/pact/providers/**/*_spec.rb'
-  task.rspec_opts = ['-t pact']
+  task.rspec_opts = ['-t pact_v2']
 end
 
 $:.unshift 'lib'

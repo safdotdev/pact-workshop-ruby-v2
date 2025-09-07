@@ -3,7 +3,7 @@
 require 'sbmt/pact/rspec'
 require 'client'
 URI::Parser.new
-RSpec.describe 'Sbmt::Pact::Providers::Test::HttpClient', :pact do
+RSpec.describe 'Sbmt::Pact::Providers::Test::HttpClient', :pact_v2 do
   has_http_pact_between 'Our Consumer', 'Our Provider'
 
   let(:json_data) do

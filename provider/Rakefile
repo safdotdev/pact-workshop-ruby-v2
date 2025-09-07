@@ -17,7 +17,7 @@ RSpec::Core::RakeTask.new(:spec)
 
 RSpec::Core::RakeTask.new('pact:verify') do |task|
   task.pattern = 'spec/pact/consumers/**/*_spec.rb'
-  task.rspec_opts = ['-t pact']
+  task.rspec_opts = ['-t pact_v2']
 end
 
 

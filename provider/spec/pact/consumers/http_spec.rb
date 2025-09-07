@@ -3,14 +3,12 @@
 require 'sbmt/pact/rspec'
 require './lib/provider'
 
-RSpec.describe 'Sbmt::Pact::Consumers::Http', :pact do
-  http_pact_provider 'Our Provider'
-  # puts pact_config.inspect
-  pact_config.instance_variable_set(:@app, Provider)
-  pact_config.instance_variable_set(:@http_port, 9292)
-
-  pact_config.instance_variable_set(:@pact_dir,
-                                    File.expand_path('../../../../consumer/spec/internal/pacts', __dir__))
+RSpec.describe 'Sbmt::Pact::Consumers::Http', :pact_v2 do
+  http_pact_provider 'Our Provider', opts: {
+    app: Provider,
+    http_port: 9292,
+    pact_dir: File.expand_path('../../../../consumer/spec/pacts', __dir__)
+  }
 
   provider_state 'data count is > 0' do
     set_up do
