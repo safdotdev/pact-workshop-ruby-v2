@@ -17,8 +17,14 @@ jobs:
           ruby-version: ${{ matrix.ruby_version }}
       - run: bundle install
         working-directory: consumer
+        env:
+          PACT_RUBY_V2_ENABLE: 'true'
+          PACT_RUBY_V1_ENABLE: 'false'
       - run: bundle install
         working-directory: provider
+        env:
+          PACT_RUBY_V2_ENABLE: 'true'
+          PACT_RUBY_V1_ENABLE: 'false'
       - run: bundle exec rake pact:spec
         working-directory: consumer
       - run: bundle exec rake pact:verify

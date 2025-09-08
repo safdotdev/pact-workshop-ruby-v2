@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-require 'sbmt/pact/rspec'
+require 'pact/v2/rspec'
 require 'client'
-URI::Parser.new
-RSpec.describe 'Sbmt::Pact::Providers::Test::HttpClient', :pact_v2 do
+# URI::Parser.new
+
+describe Client, :pact_v2 do
   has_http_pact_between 'Our Consumer', 'Our Provider'
 
   let(:json_data) do

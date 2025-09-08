@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'sbmt/pact/rspec'
+require 'pact/v2/rspec'
 require './lib/provider'
 
-RSpec.describe 'Sbmt::Pact::Consumers::Http', :pact_v2 do
+describe Provider, :pact_v2 do
   http_pact_provider 'Our Provider', opts: {
     app: Provider,
     http_port: 9292,

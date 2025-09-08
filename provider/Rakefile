@@ -3,6 +3,9 @@
 require 'rubygems'
 require 'bundler'
 
+ENV['PACT_RUBY_V2_ENABLE'] = 'true'
+ENV['PACT_RUBY_V1_ENABLE'] = 'false'
+
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
