@@ -26,7 +26,8 @@ client.rb:
 
 
       def load_provider_json
-        response = HTTParty.get(URI::encode('http://localhost:8081/provider.json?valid_date=' + Time.now.httpdate))
+        p = URI::Parser.new
+        response = HTTParty.get(p('http://localhost:8081/provider.json?valid_date=' + Time.now.httpdate))
         if response.success?
           JSON.parse(response.body)
         end
@@ -183,9 +184,10 @@ describe 'Pact with our provider', :pact => true do
   describe "get json data" do
 
     before do
+      p = URI::Parser.new
       our_provider.given("data count is > 0").
         upon_receiving("a request for json data").
-        with(method: :get, path: '/provider.json', query: URI::encode('valid_date=' + date)).
+        with(method: :get, path: '/provider.json', query: p('valid_date=' + date)).
         will_respond_with(
           status: 200,
           headers: {'Content-Type' => 'application/json'},
@@ -498,9 +500,10 @@ describe 'Pact with our provider', :pact => true do
   describe "get json data" do
 
     before do
+      p = URI::Parser.new
       our_provider.given("data count is > 0").
         upon_receiving("a request for json data").
-        with(method: :get, path: '/provider.json', query: URI::encode('valid_date=' + date)).
+        with(method: :get, path: '/provider.json', query: p('valid_date=' + date)).
         will_respond_with(
           status: 200,
           headers: {'Content-Type' => 'application/json'},
@@ -585,7 +588,8 @@ lib/client.rb:
 
 ```ruby
 def load_provider_json(query_date)
-  response = HTTParty.get(URI::encode("http://#{base_uri}/provider.json?valid_date=#{query_date}"))
+  p = URI::Parser.new
+  response = HTTParty.get(p("http://#{base_uri}/provider.json?valid_date=#{query_date}"))
   if response.success?
     JSON.parse(response.body)
   end
@@ -718,9 +722,10 @@ spec/client_spec.rb:
 describe "when there is no data" do
 
   it "handles the 404 response" do
+    p = URI::Parser.new
     our_provider.given("data count is == 0").
       upon_receiving("a request for json data").
-      with(method: :get, path: '/provider.json', query: URI::encode('valid_date=' + date)).
+      with(method: :get, path: '/provider.json', query: p('valid_date=' + date)).
       will_respond_with(status: 404)
     expect(subject.process_data(date)).to eql([0, nil])
   end
