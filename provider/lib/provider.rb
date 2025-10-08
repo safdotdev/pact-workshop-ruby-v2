@@ -10,6 +10,10 @@ end
 
 class Provider < Sinatra::Base
 
+  configure :development do
+    set :host_authorization, { permitted_hosts: [] }
+  end
+
   get '/provider.json', :provides => 'json' do
     if params[:valid_date].nil?
       [400, '"valid_date is required"']

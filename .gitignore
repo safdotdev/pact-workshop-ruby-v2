@@ -40,3 +40,5 @@ consumer/spec/pacts/*.json
 provider/spec/pacts/*.json
 provider/reports/
 
+Gemfile.lock
+pacts
