@@ -1,10 +1,8 @@
-require 'pact/consumer/rspec'
+# frozen_string_literal: true
 
-Pact.service_consumer "Our Consumer" do
-  has_pact_with "Our Provider" do
-    mock_service :our_provider do
-      port 1234
-      pact_specification_version "2.0.0"
-    end
-  end
-end
+require 'pact/v2'
+require 'pact/v2/rspec'
+# for pact/v2 with non rail apps
+require 'active_support/core_ext/object/deep_dup'
+require 'active_support/core_ext/object/blank'
+# https://guides.rubyonrails.org/active_support_core_extensions.html#stand-alone-active-support

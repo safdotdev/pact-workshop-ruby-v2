@@ -19,8 +19,7 @@ jobs:
         working-directory: consumer
       - run: bundle install
         working-directory: provider
-      - run: bundle exec rake spec
+      - run: bundle exec rake pact:spec
         working-directory: consumer
       - run: bundle exec rake pact:verify
         working-directory: provider
-        if: runner.os != 'windows'

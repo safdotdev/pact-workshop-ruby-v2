@@ -1,25 +1,9 @@
-require 'pact/provider/rspec'
+# frozen_string_literal: true
 
-Pact.service_provider "Our Provider" do
-
-  honours_pact_with 'Our Consumer' do
-    pact_uri '../consumer/spec/pacts/our_consumer-our_provider.json'
-  end
-
-end
-
-Pact.provider_states_for "Our Consumer" do
-
-  provider_state "data count is > 0" do
-    set_up do
-      ProviderData.data_count = 1000
-    end
-  end
-
-  provider_state "data count is == 0" do
-    set_up do
-      ProviderData.data_count = 0
-    end
-  end
-
-end
+require 'pact/v2'
+require 'pact/v2/rspec'
+require 'webmock/rspec'
+# for pact/v2 with non rail apps
+require 'active_support/core_ext/object/deep_dup'
+require 'active_support/core_ext/object/blank'
+# https://guides.rubyonrails.org/active_support_core_extensions.html#stand-alone-active-support
