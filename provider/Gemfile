@@ -9,5 +9,13 @@ group :development, :test do
   gem 'pry'
   gem 'rspec'
   gem 'awesome_print'
-  gem 'pact'
+  if ENV['X_PACT_DEVELOPMENT'] == 'true'
+    gem 'pact', path: '../pact-ruby'
+    gem 'pact-ffi', path: '../pact-ffi'
+  else
+    gem 'pact'
+    gem 'pact-ffi'
+  end
+  # for pact verifier
+  gem 'webmock'
 end

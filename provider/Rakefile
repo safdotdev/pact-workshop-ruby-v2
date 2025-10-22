@@ -3,6 +3,9 @@
 require 'rubygems'
 require 'bundler'
 
+ENV['PACT_RUBY_V2_ENABLE'] = 'true'
+ENV['PACT_RUBY_V1_ENABLE'] = 'false'
+
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -15,7 +18,11 @@ require 'rake'
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec)
 
-require 'pact/tasks'
+RSpec::Core::RakeTask.new('pact:verify') do |task|
+  task.pattern = 'spec/pact/consumers/**/*_spec.rb'
+  task.rspec_opts = ['-t pact']
+end
+
 
 task :default => [:spec]
 
